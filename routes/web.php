@@ -11,4 +11,11 @@
 |
 */
 
-Route::match(['get', 'post'], '/', 'CalcController@index')->name('index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::match(['get', 'post'], '/', 'StartController@index')->name('index');
+
+Route::match(['get', 'head'], '/index', 'CalcController@index')->name('index')->middleware('auth');
+
